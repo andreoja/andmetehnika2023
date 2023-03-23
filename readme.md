@@ -1,3 +1,9 @@
+### DATA
+
+##### Metadata about air quality
+
+[http://airviro.klab.ee/] (Eesti välisõhu kvaliteet)
+
 | Attr  | example value | unit    | Description                 |
 | ----- | ------------- | ------- | --------------------------- |
 | SO2   | 0,23          | µg/m³ | Vääveldioksiid            |
@@ -9,3 +15,9 @@
 | TEMP  | 9,72          | C       | Temperatuur                 |
 | WD10  | 204,40        | deg     | Tuule suund 10 m kõrgusel  |
 | WS10  | 1,56          | m/s     | Tuule kiirus 10 m kõrgusel |
+
+Process:
+
+* Using python script extract data from [http://airviro.klab.ee] ()
+* Using Openrefine transform columns data type
+* 
