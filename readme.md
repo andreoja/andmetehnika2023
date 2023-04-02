@@ -18,6 +18,18 @@
 
 Process:
 
-* Using python script extract data from [http://airviro.klab.ee] ()
-* Using Openrefine transform columns data type
-* 
+* Using python script extract data from [http://airviro.klab.ee] (fetch_air.ipynb)
+* Using Openrefine transform columns into correct format (use data_tranform_air.json)
+* Use Openrefine export to SQL.
+
+### Metadata about electricity:
+
+Downloaded from http://energia.ee, need to log in and can only be accessed by the contract owner.
+
+| Attr  | example value | unit  | Description                 |
+|-------|---------------|-------| --------------------------- |
+| Elec  | 2,42          | kWh   | tunnis kulunud elekter            |
+| Price | 70,03         | €/MWh | Börsi hetke hind          |
+
+* Downloaded file to be fixed with Openrefine (use data_transform_el.json)
+* Use Openrefine export to SQL.

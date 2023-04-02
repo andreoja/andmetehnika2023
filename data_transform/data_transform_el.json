@@ -1,0 +1,144 @@
+[
+  {
+    "op": "core/column-split",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "KP (timestamp)",
+    "guessCellType": true,
+    "removeOriginalColumn": false,
+    "mode": "separator",
+    "separator": " ",
+    "regex": false,
+    "maxColumns": 2,
+    "description": "Split column KP (timestamp) by separator"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "hind tarbitud energia EUR/MWh",
+    "expression": "grel:value.replace(',','.').toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column hind tarbitud energia EUR/MWh using expression grel:value.replace(',','.').toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "tarbitud energia (kWh)",
+    "expression": "grel:value.replace(',','.').toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column tarbitud energia (kWh) using expression grel:value.replace(',','.').toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "KP (timestamp) 1",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column KP (timestamp) 1 using expression value.toDate()"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "KP (timestamp) 2",
+    "newColumnName": "Algusaeg",
+    "description": "Rename column KP (timestamp) 2 to Algusaeg"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "KP (timestamp) 1",
+    "newColumnName": "Kuupäev",
+    "description": "Rename column KP (timestamp) 1 to Kuupäev"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Algusaeg",
+    "expression": "grel:cells[\"Algusaeg\"].value",
+    "onError": "set-to-blank",
+    "newColumnName": "Lõppaeg",
+    "columnInsertIndex": 3,
+    "description": "Create column Lõppaeg at index 3 based on column Algusaeg using expression grel:cells[\"Algusaeg\"].value"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Algusaeg",
+    "expression": "grel:\"\"",
+    "onError": "set-to-blank",
+    "newColumnName": "test",
+    "columnInsertIndex": 3,
+    "description": "Create column test at index 3 based on column Algusaeg using expression grel:\"\""
+  },
+  {
+    "op": "core/column-move",
+    "columnName": "test",
+    "index": 0,
+    "description": "Move column test to position 0"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "Lõppaeg",
+    "expression": "grel:if(isBlank(value),\"null\",value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Lõppaeg using expression grel:if(isBlank(value),\"null\",value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "Lõppaeg",
+    "expression": "grel:row.record.cells[\"Lõppaeg\"].value[rowIndex+1]",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Lõppaeg using expression grel:row.record.cells[\"Lõppaeg\"].value[rowIndex+1]"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "Lõppaeg",
+    "expression": "grel:if(value==\"null\",\"\",value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Lõppaeg using expression grel:if(value==\"null\",\"\",value)"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "test",
+    "description": "Remove column test"
+  }
+]
