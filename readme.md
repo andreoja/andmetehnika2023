@@ -24,12 +24,13 @@ Process:
 
 ### Metadata about electricity:
 
-Downloaded from http://energia.ee, need to log in and can only be accessed by the contract owner.
+Downloaded from https://e.elering.ee/#/, need to log in and can only be accessed by the contract owner.
 
 | Attr  | example value | unit  | Description                 |
 |-------|---------------|-------| --------------------------- |
 | Elec  | 2,42          | kWh   | tunnis kulunud elekter            |
 | Price | 70,03         | €/MWh | Börsi hetke hind          |
 
+* Nord Pool hourly data from [https://www.nordpoolgroup.com/en/Market-data1/Dayahead/Area-Prices/EE/Hourly/?view=table]
 * Downloaded file to be fixed with Openrefine (use data_transform_el.json)
 * Use Openrefine export to SQL.
